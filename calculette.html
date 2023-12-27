@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice JavaScript</title>
+</head>
+<body>
+
+<h2>Calculatrice JavaScript</h2>
+
+<form>
+    <label for="nombre1">Nombre 1 :</label>
+    <input type="text" id="nombre1" placeholder="Entrez un nombre" required pattern="[0-9]+(\.[0-9]+)?" title="Entrez un nombre">
+
+    <label for="nombre2">Nombre 2 :</label>
+    <input type="text" id="nombre2" placeholder="Entrez un nombre" required pattern="[0-9]+(\.[0-9]+)?" title="Entrez un nombre autre que 0">
+
+    <button type="button" onclick="calculer()">Calculer</button>
+</form>
+
+<div id="resultat"></div>
+
+<script>
+    function calculer() {
+        // Récupérer les valeurs saisies
+        var nombre1 = document.getElementById("nombre1").value;
+        var nombre2 = document.getElementById("nombre2").value;
+
+        // Convertir les valeurs en nombres
+        nombre1 = parseFloat(nombre1);
+        nombre2 = parseFloat(nombre2);
+
+        // Vérifier si les saisies sont des nombres valides
+        if (isNaN(nombre1) || isNaN(nombre2)) {
+            alert("Veuillez saisir des nombres valides.");
+            return;
+        }
+
+        // Vérifier la division par zéro
+        if (nombre2 === 0) {
+            alert("Division par zéro impossible.");
+            return;
+        }
+
+        // Calculer les opérations
+        var somme = nombre1 + nombre2;
+        var multiplication = nombre1 * nombre2;
+        var division = nombre1 / nombre2;
+        var soustraction = nombre1 - nombre2;
+
+        // Afficher les résultats
+        document.getElementById("resultat").innerHTML =
+            "Somme : " + somme + "<br>" +
+            "Multiplication : " + multiplication + "<br>" +
+            "Division : " + division + "<br>" +
+            "Soustraction : " + soustraction;
+    }
+</script>
+
+</body>
+</html>
